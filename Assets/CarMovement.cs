@@ -12,7 +12,7 @@ public class CarMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("Hello!");
+        //Debug.Log("Hello!");
     }
 
     private void Awake()
