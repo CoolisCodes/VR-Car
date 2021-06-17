@@ -5,7 +5,7 @@ using UnityEngine;
 public class RoadBehavior : MonoBehaviour
 {
     public float roadOffsetY = 0;
-    public float speed = 1;
+    public float roadSpeed = 1;
 
     public Material roadMaterial;
 
@@ -18,7 +18,7 @@ public class RoadBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        roadOffsetY += speed * Time.deltaTime;
+        roadOffsetY += roadSpeed * Time.deltaTime;
         roadMaterial.SetTextureOffset("_MainTex", new Vector2(0, -roadOffsetY));
     }
 }
