@@ -11,7 +11,7 @@ public class CarMovement : MonoBehaviour
 
     public float roadXScale = 10;
 
-    [Range(-1, -0.005f)]
+
     public float turnSpeed = -0.01f;
 
     private void Awake()

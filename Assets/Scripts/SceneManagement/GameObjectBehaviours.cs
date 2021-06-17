@@ -6,6 +6,9 @@ public class GameObjectBehaviours : MonoBehaviour
 {
     public float gameSpeed;
 
+    [Range(-1, -0.005f)]
+    public float carTurningSpeed = -0.15f;
+
     public CarMovement car;
     public RoadBehavior roadBehavior;
 
@@ -14,5 +17,6 @@ public class GameObjectBehaviours : MonoBehaviour
     {
         roadBehavior.roadSpeed = gameSpeed;
         car.roadXScale = roadBehavior.transform.localScale.z - 3.8f;
+        car.turnSpeed = carTurningSpeed;
     }
 }

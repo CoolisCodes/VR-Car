@@ -896,6 +896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSpeed: 2
+  carTurningSpeed: -0.15
   car: {fileID: 1935227280}
   roadBehavior: {fileID: 1369958303}
 --- !u!114 &1610131094
