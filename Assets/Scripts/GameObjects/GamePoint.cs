@@ -24,22 +24,15 @@ public class GamePoint : MonoBehaviour
         if (other.gameObject.GetComponent<CarMovement>() != null)
         {
             Debug.Log("You Got a point");
+
+            GameManager gameManager = FindObjectOfType<GameManager>();
+
+            gameManager.AddPoint();
+
+            gameManager.activeObjects.Remove(this.gameObject);
+
+            Destroy(this.gameObject);
         }
-
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
 
     }
 }
