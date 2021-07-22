@@ -26,18 +26,26 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        //car.StartEngine();
+        StartCoroutine(CarVoice());
         roadBehavior.roadSpeed = roadSpeed;
         car.roadXScale = roadBehavior.transform.localScale.z - 3.8f;
         car.turnSpeed = carTurningSpeed;
         StartCoroutine(SpawnObjectsRoutine());
     }
 
+    public void StopGame()
+    {
+        Application.Quit();
+    }
+
     public void GameOver()
     {
         roadBehavior.roadSpeed = 0;
 
-        //StopCoroutine(SpawnObjectsRoutine());
         StopAllCoroutines();
+        FindObjectOfType<SoundManager>().Stop("CarVoice");
+        //car.StopEngine();
 
         foreach (GameObject active in activeObjects)
         {
@@ -72,7 +80,7 @@ public class GameManager : MonoBehaviour
     {
         score += 1;
 
-        FindObjectOfType<SoundManager>().Play("test");
+        FindObjectOfType<SoundManager>().Play("Coin");
     }
 
 
@@ -83,7 +91,7 @@ public class GameManager : MonoBehaviour
 
         if (Mathf.Abs(randomX0 - randomX1) > minimumObjectDistance)
         {
-            return new Vector3[] { new Vector3(randomX0, 0.5f, 100), new Vector3(randomX1, 0.5f, 100) };
+            return new Vector3[] { new Vector3(randomX0, 0.5f, 100), new Vector3(randomX1, 0.1f, 100) };
         }
         else
         {
@@ -98,6 +106,20 @@ public class GameManager : MonoBehaviour
             SpawnObjects(gamePointPrefab.gameObject, gameObstaclePrefab.gameObject);
             yield return new WaitForSeconds(0.8f);
         }
+    }
+
+    public IEnumerator CarVoice()
+    {
+        while (true)
+        {
+            FindObjectOfType<SoundManager>().Play("CarVoice");
+            yield return new WaitForSeconds(6);
+        }
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 
     public void ChangeScene(string sceneName)

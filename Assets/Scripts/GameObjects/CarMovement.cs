@@ -14,6 +14,15 @@ public class CarMovement : MonoBehaviour
 
     public float turnSpeed = -0.01f;
 
+    public void StartEngine()
+    {
+        FindObjectOfType<SoundManager>().Play("CarVoice");
+    }
+    public void  StopEngine()
+    {
+        FindObjectOfType<SoundManager>().Stop("CarVoice");
+    }
+
     private void Awake()
     {
         carTransform = transform;

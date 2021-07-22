@@ -20,8 +20,9 @@ public class GameObstacle : MonoBehaviour
     {
         if (other.gameObject.GetComponent<CarMovement>() != null)
         {
+            
             FindObjectOfType<GameManager>().GameOver();
-
+            FindObjectOfType<SoundManager>().Play("Crash");
             Debug.Log("You Lost the Game!");
         }
     }
